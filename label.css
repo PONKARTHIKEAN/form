@@ -1,0 +1,10 @@
+body{
+     background: linear-gradient(yellow ,black,blue);
+}
+.center{
+    position:relative;
+    top:38%;
+    left: 43%;
+    border: double 30%;
+    color: aliceblue;
+}
