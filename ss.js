@@ -1,26 +1,28 @@
-function dateIsValid(dateStr) {
-    const regex = /^\d{2}\/\d{2}\/\d{4}$/;
-  
-    if (dateStr.match(regex) === null) {
-      return false;
+function matchpass(){
+    var firstpassword=document.f1.password.value;
+    var secondpassword=document.f1.password2.value;
+    var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    return re.test(input_str);
+}
+
+function validateForm(event) {
+    var phone = document.getElementById('myform_phone').value;
+    if (!validatePhoneNumber(phone)) {
+        document.getElementById('phone_error').classList.remove('hidden');
+    } else {
+        document.getElementById('phone_error').classList.add('hidden');
+        alert("validation success")
     }
-  
-    const [month, day, year] = dateStr.split('/');
-  
-    // 👇️ format Date string as `yyyy-mm-dd`
-    const isoFormattedStr = `${year}-${month}-${day}`;
-  
-    const date = new Date(isoFormattedStr);
-  
-    const timestamp = date.getTime();
-  
-    if (typeof timestamp !== 'number' || Number.isNaN(timestamp)) {
-      return false;
+    event.preventDefault();
+}
+
+document.getElementById('myform').addEventListener('submit', validateForm);
+ var firstpassword=document.f1.password.value;
+ var secondpassword=document.f1.password2.value;
+    if(firstpassword==secondpassword){
+    return true;
     }
-  
-    return date.toISOString().startsWith(isoFormattedStr);
-  }
-  
-  console.log(dateIsValid('01/18/2022')); // 👉️ true
-  console.log(dateIsValid('01/35/2022')); // 👉️ false
-  console.log(dateIsValid('hello')); // 👉️ false
+    else{
+    alert("password must be same!");
+    return false;
+    }
